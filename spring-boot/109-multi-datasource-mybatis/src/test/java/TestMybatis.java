@@ -1,6 +1,7 @@
 import com.alibaba.fastjson.JSON;
 import com.git.hui.boot.multi.datasource.Application;
 import com.git.hui.boot.multi.datasource.story.entity.ProjectDataInfo;
+import com.git.hui.boot.multi.datasource.story.entity.ProjectDataInfoExample;
 import com.git.hui.boot.multi.datasource.story.mapper.ProjectDataInfoMapper;
 import com.google.common.base.CaseFormat;
 import org.apache.commons.lang3.StringUtils;
@@ -77,15 +78,17 @@ public class TestMybatis {
                 line = br.readLine();
             }
 
-            projectDataInfoMapper.insertSelective(obj)   ;
+            projectDataInfoMapper.insertSelective(obj);
             System.out.println(JSON.toJSONString(obj));
-            System.out.println("空格 ：" + sb.toString().replaceAll("  ", " "));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        ProjectDataInfoExample example = new ProjectDataInfoExample();
+        example.createCriteria().andOpenNumberEqualTo(obj.getOpenNumber());
+        List<ProjectDataInfo> listAfter = projectDataInfoMapper.selectByExample(example);
+        System.out.println(" 生成 成功：" + JSON.toJSONString(listAfter));
 
 //        ProjectDataInfo projectDataInfo = new ProjectDataInfo();
 //        projectDataInfo.setCompanyName();;
@@ -184,8 +187,6 @@ public class TestMybatis {
         list.put("询盘云使用时间（天）", "xpy_use_time_day");
         list.put("WA账号多开", "whatsapp_open");
         list.put("【废弃】询盘云运营负责人", "xpy_operate_manager");
-
-
 
 
         return list;

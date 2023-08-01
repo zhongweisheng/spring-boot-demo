@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="MysqlTables" targetRuntime="MyBatis3">
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
+        一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
+     -->
+        <property name="autoDelimitKeywords" value="false"/>
+
+        <!-- 生成的Java文件的编码-->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 格式化java代码-->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+
+        <!-- 格式化XML代码-->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!--beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+
+        <!--&lt;!&ndash; 这里的type里写的是你的实现类的类全路径 &ndash;&gt;-->
+        <!-- <commentGenerator type="com.xhl.es.config.mybatis.MyCommentGenerator">
+             <property name="suppressDate" value="true"/>
+             <property name="suppressAllComments" value="true"/>
+         </commentGenerator>-->
+
+        <!--<commentGenerator>-->
+        <!--<property name="suppressDate" value="true"/>-->
+        <!--<property name="suppressAllComments" value="true"/>-->
+        <!--</commentGenerator>-->
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--数据库链接地址账号密码-->
+        <!--                        connectionURL="jdbc:mysql://47.96.141.74:3306/crm"-->
+
+        <!--
+                connectionURL="jdbc:mysql://43.129.230.235:3306/cuss"
+                connectionURL="jdbc:mysql://115.159.116.187:3306/oversea"
+                connectionURL="jdbc:mysql://8.210.230.215:3306/cuss"
+                115.159.116.187
+         connectionURL="jdbc:mysql://115.159.116.187:3306/crm"
+        -->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/story?serverTimezone=Asia/Shanghai"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--生成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.git.hui.boot.multi.datasource.story.entity" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成映射文件存放位置-->
+        <!--<sqlMapGenerator targetPackage="mybatis/mapper/crm" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>-->
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator targetPackage="mapping\story" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+
+        <!--<sqlMapGenerator targetPackage="com.xhl.cuss.googlestat.dao.mapper" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>-->
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.git.hui.boot.multi.datasource.story.mapper"
+                             targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+
+        </javaClientGenerator>
+
+        <!--        <table tableName="trans_money_exchange_rate" domainObjectName="MoneyExchangeRate"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+
+        <table tableName="project_data_info" domainObjectName="ProjectDataInfo"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true"
+               selectByPrimaryKeyQueryId="true"
+               selectByExampleQueryId="true">
+            <!--mysql 配置-->
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>
+            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>
+        </table>
+
+        <!--                <table tableName="google_stat_clue_visitor_inquiry_relation" domainObjectName="ClueVisitorInquiryRelation"-->
+        <!--                       enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--                       enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--                       enableSelectByPrimaryKey="true"-->
+        <!--                       enableUpdateByPrimaryKey="true"-->
+        <!--                       enableDeleteByPrimaryKey="true"-->
+        <!--                       selectByPrimaryKeyQueryId="true"-->
+        <!--                       selectByExampleQueryId="true">-->
+        <!--                    &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--                    <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--                    <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--                    <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--                </table>-->
+
+        <!--        <table tableName="f_column_value" domainObjectName="ColumnValue"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="cuss_visitor_info" domainObjectName="CussVisitorInfo"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+
+        <!--                <table tableName="cuss_google_info" domainObjectName="CussGoogleInfo"-->
+        <!--                       enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--                       enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--                       enableSelectByPrimaryKey="true"-->
+        <!--                       enableUpdateByPrimaryKey="true"-->
+        <!--                       enableDeleteByPrimaryKey="true"-->
+        <!--                       selectByPrimaryKeyQueryId="true"-->
+        <!--                       selectByExampleQueryId="true">-->
+        <!--                    &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--                    <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--                    <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--                    <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--                </table>-->
+
+
+        <!--        <table tableName="google_stat_visitor_interaction_info" domainObjectName="VisitorInteractionInfo"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="google_stat_gclid_visitor_relation" domainObjectName="GclidVisitorRelation"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+
+        <!--        <table tableName="google_stat_click_date_log" domainObjectName="ClickDateLog"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+        <!--        <table tableName="google_stat_click_date_exe_record" domainObjectName="ClickDateExeRecord"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+        <!--        -->
+        <!--        <table tableName="google_stat_campaign_date_log" domainObjectName="CampaignDateLog"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+        <!--        <table tableName="google_stat_campaign_date_exe_record" domainObjectName="CampaignDateExeRecord"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer"/>-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer"/>-->
+        <!--        </table>-->
+
+
+        <!--        <table tableName="google_stat_campaign_date" domainObjectName="GoogleStatCampaignDate"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey ="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="down_type" property="downType" javaType="java.lang.Integer" />-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer" />-->
+        <!--            <columnOverride column="is_delete" property="isDelete" javaType="java.lang.Integer" />-->
+
+        <!--        </table>-->
+        <!--        <table tableName="adwords_date_click" domainObjectName="AdwordsDateClick"-->
+        <!--               enableCountByExample="true" enableUpdateByExample="true"-->
+        <!--               enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--               enableSelectByPrimaryKey="true"-->
+        <!--               enableUpdateByPrimaryKey="true"-->
+        <!--               enableDeleteByPrimaryKey ="true"-->
+        <!--               selectByPrimaryKeyQueryId="true"-->
+        <!--               selectByExampleQueryId="true">-->
+        <!--            &lt;!&ndash;mysql 配置&ndash;&gt;-->
+        <!--            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>-->
+        <!--            <columnOverride column="type" property="type" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="accountDescriptiveName" property="accountDescriptiveName" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="accountDescriptiveName" property="accountDescriptiveName" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="adFormat" property="adFormat" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="adGroupId" property="adGroupId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="adGroupName" property="adGroupName" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="adNetworkType1" property="adNetworkType1" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="adNetworkType2" property="adNetworkType2" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="campaignId" property="campaignId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="campaignLocationTargetId" property="campaignLocationTargetId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="campaignName" property="campaignName" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="clickType" property="clickType" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="creativeId" property="creativeId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="criteriaId" property="criteriaId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="criteriaParameters" property="criteriaParameters" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="externalCustomerId" property="externalCustomerId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="keywordMatchType" property="keywordMatchType" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="lopCityCriteriaId" property="lopCityCriteriaId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="lopCountryCriteriaId" property="lopCountryCriteriaId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="lopMetroCriteriaId" property="lopMetroCriteriaId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="lopMostSpecificTargetId" property="lopMostSpecificTargetId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="lopRegionCriteriaId" property="lopRegionCriteriaId" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="monthOfYear" property="monthOfYear" javaType="java.lang.String" />-->
+        <!--            <columnOverride column="userListId" property="userListId" javaType="java.lang.String" />-->
+        <!--        </table>-->
+
+        <!--<table tableName="crm_inquiry" domainObjectName="CrmInquiry"
+               enableCountByExample="true" enableUpdateByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey ="true"
+               selectByPrimaryKeyQueryId="true"
+
+               selectByExampleQueryId="true">
+            &lt;!&ndash;mysql 配置&ndash;&gt;
+            <generatedKey column="id" sqlStatement="JDBC" identity="true"></generatedKey>
+            <columnOverride column="type" property="type" javaType="java.lang.Integer" />
+            <columnOverride column="linked_status" property="linkedStatus" javaType="java.lang.Integer" />
+        </table>-->
+
+
+    </context>
+</generatorConfiguration>

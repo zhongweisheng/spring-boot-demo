@@ -57,6 +57,7 @@ public class TestMybatis {
             sb.append("StringBuilder query = new StringBuilder(100);\r\n");
             // boolean is = true;
             String currentField = "";
+            String valueRemark = "";
             while (line != null) {
                 line = line.trim();
                 boolean isColumnName = list.contains(line);
@@ -70,7 +71,14 @@ public class TestMybatis {
                         currentField = fieldName;
                     }
                 } else {
-                    if (StringUtils.isNotEmpty(currentField)) {
+                    if("remark".equalsIgnoreCase(currentField)){
+                        while(line!=null && !"2.1询盘云开通申请".equalsIgnoreCase(line)) {
+                            line = line.trim();
+                            valueRemark +=line;
+                            line = br.readLine();
+                        }
+                        setObjFieldValue(obj, currentField, valueRemark);
+                    } else if (StringUtils.isNotEmpty(currentField)) {
                         String value = line.trim();
                         setObjFieldValue(obj, currentField, value);
                     }
